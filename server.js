@@ -17,6 +17,7 @@ app.use(
 
 app.use("/public", express.static(path.join(__dirname, "/uploads")));
 app.get("/", (req, res) => {
+  console.log(process.cwd() + "/views/index.html");
   res.sendFile(process.cwd() + "/views/index.html");
 });
 
