@@ -17,7 +17,7 @@ router.post("/auth/login", (req, res) => {
           const token = jwt.sign(
             { _id: user._id, email: user.email },
             "JWT_SECRET",
-            { expiresIn: "1d" }
+            { expiresIn: "1W" }
           );
           res.status(200).json({
             token,
@@ -79,7 +79,7 @@ router.post("/auth/register", (req, res) => {
             const token = jwt.sign(
               { _id: data._id, email: data.email },
               "JWT_SECRET",
-              { expiresIn: "1d" }
+              { expiresIn: "1W" }
             );
             return res.status(201).json({
               token: token,
