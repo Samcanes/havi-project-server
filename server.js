@@ -15,6 +15,7 @@ app.use(
   })
 );
 
+app.use("/public", express.static(path.join(__dirname, "/uploads")));
 app.get("/", (req, res) => {
   res.sendFile(process.cwd() + "/views/index.html");
 });
@@ -26,10 +27,6 @@ app.get("/test", (req, res) => {
   res.status(200).json({
     message: "hello, I am functional",
   });
-});
-
-app.listen(3000, () => {
-  console.log("listening on 3000");
 });
 
 mongoose
@@ -49,3 +46,7 @@ mongoose
     console.log(`db error ${err.message}`);
     process.exit(-1);
   });
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Your app is listening on port " + listener.address().port);
+});
