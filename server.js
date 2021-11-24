@@ -47,6 +47,9 @@ mongoose
     process.exit(-1);
   });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(process.env.PORT || 3000, (port, err) => {
+  if (err) {
+    return console.error(err);
+  }
+  return console.log(`server is listening on ${port}`);
 });
